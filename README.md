@@ -1,19 +1,21 @@
 # DeepSomatic_manuscript
 Collection of scripts used for bam, vcf and bed manipulation described in the DeepSomatic manuscript.
 
-# Convert VCF to BED
+## Convert VCF to BED
+### vcf_to_bed_v4.py
 Script used to convert variant regions in VCF to BED format.
 ```
 Usage: python3 vcf_to_bed_v4.py -v ${VCF} -i ${VCF}.tbi -t 'deepsomatic' -o ${BED}
 ```
 
-# Filter for high confidence variants
+## Filter for high confidence variants
+### vcf_intersection_complex_v2.py
 Script used to filter for somatic variants that meet a certain criteria.
 ```
 Usage: python3 vcf_intersection_complex_v2.py -v ${VCF} -i ${VCF}.tbi -f 'filter4' -o filtered.vcf.gz
 ```
 
-# Titration Scripts
+## Titration Scripts
 Scripts used to generate titration bams for DeepSomatic analysis. 
 
 `tumor_purity_titration.sh` and `normal_purity_titration.sh` are almost identical, only difference is the naming convention for output files.
