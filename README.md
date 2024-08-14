@@ -9,10 +9,10 @@ Usage: python3 vcf_to_bed_v4.py -v ${VCF} -i ${VCF}.tbi -t 'deepsomatic' -o ${BE
 ```
 
 ## Filter for high confidence variants
-### vcf_intersection_complex_v2.py
+### vcf_intersection.py
 Script used to filter for somatic variants that meet a certain criteria.
 ```
-Usage: python3 vcf_intersection_complex_v2.py -v ${VCF} -i ${VCF}.tbi -f 'filter4' -o filtered.vcf.gz
+Usage: python3 vcf_intersection.py -v ${VCF} -i ${VCF}.tbi -f 'filter4' -o filtered.vcf.gz
 ```
 
 ## Titration Scripts
