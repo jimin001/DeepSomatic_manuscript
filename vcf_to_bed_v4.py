@@ -3,12 +3,7 @@ import argparse
 
 """
 running command:
-
-VCF=/Users/jimin/CGL/nanopore_somatic/VCF/1205_1937_SomaticOnly_DeepSomatic_Illumina_PacBio_ONT_merged.vcf.gz
-VCF_IDX=/Users/jimin/CGL/nanopore_somatic/VCF/1205_1937_SomaticOnly_DeepSomatic_Illumina_PacBio_ONT_merged.vcf.gz.tbi
-OUTFILE=/Users/jimin/CGL/nanopore_somatic/VCF/1205_1937_SomaticOnly_DeepSomatic_Illumina_PacBio_ONT_merged.bed
-
-python3 vcf_to_bed_script.py -v $VCF -i $VCF_IDX -o $OUTFILE
+python3 vcf_to_bed_v4.py -v $VCF -i $VCF_IDX -t <'deepsomatic' or 'severus'>  -b <'severus' only: basepairs> -o $OUTFILE
 """
 parser = argparse.ArgumentParser()
 parser.add_argument('--vcf', '-v', type=str, required=True, help='vcf file path')
