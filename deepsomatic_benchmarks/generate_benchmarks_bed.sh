@@ -34,7 +34,7 @@ echo "sv_bed2: $sv_bed2"; fi
 if [[ "$other_regions" != "" ]] ; then
 echo "other_regions: $other_regions"; fi
 
-if [[ "$name_other_region" != "" ]] ; then
+if [[ "$name_other_regions" != "" ]] ; then
 echo "name_other_regions: $name_other_regions"; fi
 
 
