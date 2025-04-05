@@ -1,4 +1,4 @@
-while getopts b:m:t:s:p:o:d:a:b:x:y: flag
+while getopts b:m:t:s:p:o:d:j:k:x:y: flag
 do
     case "${flag}" in
         b) bed_file=${OPTARG};;
@@ -8,8 +8,8 @@ do
         p) output_prefix=${OPTARG};;
         o) output_directory=${OPTARG};;
 		d) date=${OPTARG};;
-        a) sv_bed1=${OPTARG};;
-        b) sv_bed2=${OPTARG};;
+        j) sv_bed1=${OPTARG};;
+        k) sv_bed2=${OPTARG};;
         x) other_regions=${OPTARG};;
         y) name_other_regions=${OPTARG};;
 
