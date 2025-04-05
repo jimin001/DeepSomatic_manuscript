@@ -108,3 +108,4 @@ elif
     [[ "${CURR_BED}" == ${output_directory}/${date}_${sample}_${output_prefix}_highconf_minusSDs_${name_other_regions}.bed ]]
 then
     grep -v "chrX" ${CURR_BED} | grep -v "chrY" > ${output_directory}/${date}_${sample}_${output_prefix}_highconf_minusSDs_${name_other_regions}_chr1_22.bed
+fi
