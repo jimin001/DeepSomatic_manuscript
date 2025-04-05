@@ -76,7 +76,7 @@ fi
 
 # 3. subtract any other regions
 
-if [[ "$other_regions" != "" && "$name_other_regions" != "" ]]
+if [[ "$other_regions" != "" && "${name_other_regions}" != "" ]]
 then
     if [[ "${CURR_BED}" == ${output_directory}/${date}_${sample}_${output_prefix}_highconf_minusSVs_SDs.bed ]]
     then
