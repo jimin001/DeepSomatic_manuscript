@@ -55,7 +55,7 @@ mkdir -p ${output_directory}
 -d ${date}
 
 # output from subtract_confusing_regions.sh
-HIGH_CONF_BED=${output_directory}/${sample}/${date}_${sample}_${output_prefix}_highconf.bed
+HIGH_CONF=${output_directory}/${sample}/${date}_${sample}_${output_prefix}_highconf.bed
 
 # 2. subtract SV regions and SD regions
 
