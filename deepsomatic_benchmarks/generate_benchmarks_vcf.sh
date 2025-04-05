@@ -12,6 +12,8 @@ do
     esac
 done
 
+# script to generate benchmarking VCFs
+
 echo "illumina_vcf: $illumina_vcf";
 echo "hifi_vcf: $hifi_vcf";
 echo "ont_vcf: $ont_vcf";
@@ -21,7 +23,7 @@ echo "variant_caller: $variant_caller";
 echo "variant caller options: deepsomatic or clairs"
 echo "variant caller version: $version";
 echo "filter: $filter";
-echo "filter options: 'filter4', 'orthogonal technology'"
+echo "filter options: 'filter4', 'orthogonal_technology'"
 
 
 set -o pipefail
@@ -30,7 +32,7 @@ set -u
 
 # input files should be filtered for somatic-only
 
-if [[ $filter -eq "filter4" ]]
+if [[ $filter == "filter4" ]]
 then
 	#########################################
 	# generate filter4 benchmark 
@@ -50,7 +52,7 @@ then
 
 	python3 ${TOOL} -v ${MERGE_VCF} -i ${MERGE_VCF}.tbi -f 'filter4' -o ${OUTPUT}
 	bcftools index -t ${OUTPUT}
-elif [[ $filter -eq "orthogonal technology" ]]
+elif [[ $filter == "orthogonal_technology" ]]
 then
 	################################################
 	# generate orthogonal technology benchmark 
@@ -72,10 +74,10 @@ then
 
 	#################################################### INTERSECTION ####################################################
 
-	if [[ $variant_caller -eq "deepsomatic" ]]
+	if [[ $variant_caller == "deepsomatic" ]]
 	then
 		FILTER='two_tech'
-	elif [[ $variant_caller -eq "clairs" ]]
+	elif [[ $variant_caller == "clairs" ]]
 	then
 		FILTER='two_tech_clairs'
 	fi
@@ -109,4 +111,22 @@ then
 	bgzip ${output_directory}/${sample}_${variant_caller}_${version}_Illumina_ONT_somaticOnly_intersection.vcf
 	bcftools index -t ${output_directory}/${sample}_${variant_caller}_${version}_Illumina_ONT_somaticOnly_intersection.vcf.gz
 fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
