@@ -90,6 +90,7 @@ then
 
         # update CURR_BED
         CURR_BED=${output_directory}/${date}_${sample}_${output_prefix}_highconf_minusSDs_${name_other_regions}.bed
+    fi
 fi
 
 
