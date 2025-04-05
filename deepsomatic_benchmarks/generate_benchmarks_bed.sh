@@ -23,6 +23,7 @@ echo "sample: $sample";
 echo "output_prefix: $output_prefix";
 echo "output_directory: $output_directory";
 echo "date: $date";
+echo "name_other_regions: $name_other_regions"
 
 # optional parameters
 if [[ "$sv_bed1" != "" ]] ; then
@@ -36,7 +37,7 @@ echo "other_regions: $other_regions"; fi
 
 if [[ "$name_other_regions" != "" ]] ; then
 echo "name_other_regions: $name_other_regions"; fi
-echo "name_other_regions: $name_other_regions"
+
 
 set -o pipefail
 set -e
