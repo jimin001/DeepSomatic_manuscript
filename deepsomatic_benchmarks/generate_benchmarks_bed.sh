@@ -1,4 +1,4 @@
-while getopts b:m:t:s:p:o:d:j:k:x:y: flag
+while getopts b:m:t:s:p:o:d:j::k::x::y:: flag
 do
     case "${flag}" in
         b) bed_file=${OPTARG};;
