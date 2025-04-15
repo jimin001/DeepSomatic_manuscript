@@ -85,3 +85,25 @@ Usage: ./split_bam_tumor.sh \
    -s <sample> \
    -o <output_directory>
 ```
+
+## Generate benchmarks
+### generate_benchmarks_vcf.sh
+run locally:
+```
+/private/groups/patenlab/jimin/GITHUB/DeepSomatic_manuscript/deepsomatic_benchmarks/generate_benchmarks_vcf.sh \
+-i ${illumina_vcf} -h ${hifi_vcf} -o ${ont_vcf} -s ${sample} -d ${output_directory} -c ${variant_caller} -v ${version} -f ${filter}
+
+variant caller options: deepsomatic or clairs
+filter options: 'filter4', 'orthogonal_technology'
+```
+### generate_benchmarks_bed.sh
+run locally:
+```
+/private/groups/patenlab/jimin/GITHUB/DeepSomatic_manuscript/deepsomatic_benchmarks/generate_benchmarks_bed.sh \
+-b ${bed_file} -m ${merged_vcf} -t ${truth_vcf} -s ${sample} -p ${output_prefix} -o ${output_directory} -d ${date} \
+-j ${sv_bed1} -k ${sv_bed2} -x "" -y ""
+
+flags: -j, -k, -x, -y are optional
+```
+
+
