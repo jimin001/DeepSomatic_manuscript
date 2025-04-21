@@ -1,5 +1,8 @@
 # generate filter4 benchmarks
 
+# moved location: /private/groups/patenlab/jimin/data/VCF/DeepSomatic_v1.8.0_fix_multicancer_wgs_model/filter4_benchmark
+
+
 ################################
 # training cell lines
 ################################
@@ -106,3 +109,15 @@ filter="filter4"
 /private/groups/patenlab/jimin/GITHUB/DeepSomatic_manuscript/deepsomatic_benchmarks/generate_benchmarks_vcf.sh \
 -i ${illumina_vcf} -h ${hifi_vcf} -o ${ont_vcf} -s ${sample} -d ${output_directory} -c ${variant_caller} -v ${version} -f ${filter}
 
+
+# intersect VCF's with high confidence bed ################################################
+
+
+for sample in 1395 1437 1937 1954 2009 578 HG008 UPN237 UPN237_new_tumor
+do
+  TRUTH_VCF=/private/groups/patenlab/jimin/data/VCF/DeepSomatic_v1.8.0_fix_multicancer_wgs_model/filter4_benchmark/${sample}_deepsomatic_v1.8.0_Illumina_PacBio_ONT_somaticOnly_filter4.vcf.gz
+  HC_BED=/private/groups/patenlab/jimin/data/BED/DeepSomatic_v1.8.0_fixed_illumina_multicancer/filter4/04142025_${sample}_deepsomatic_v1.8.0_filter4_highconf_minusSVs_SDs_chr1_22.bed
+
+  bedtools intersect -header -a ${TRUTH_VCF} -b ${HC_BED} | bgzip > /private/groups/patenlab/jimin/data/VCF/DeepSomatic_v1.8.0_fix_multicancer_wgs_model/filter4_benchmark/intersect_HC/${sample}_deepsomatic_v1.8.0_Illumina_PacBio_ONT_somaticOnly_filter4_intersect_HC.vcf.gz
+  bcftools index -t /private/groups/patenlab/jimin/data/VCF/DeepSomatic_v1.8.0_fix_multicancer_wgs_model/filter4_benchmark/intersect_HC/${sample}_deepsomatic_v1.8.0_Illumina_PacBio_ONT_somaticOnly_filter4_intersect_HC.vcf.gz
+done

@@ -23,7 +23,7 @@ echo "variant_caller: $variant_caller";
 echo "variant caller options: deepsomatic or clairs"
 echo "variant caller version: $version";
 echo "filter: $filter";
-echo "filter options: 'filter4', 'orthogonal_technology'"
+echo "filter options: 'filter4', 'orthogonal_technology', 'orthogonal_tools'"
 
 
 set -o pipefail
@@ -52,6 +52,23 @@ then
 
 	python3 ${TOOL} -v ${MERGE_VCF} -i ${MERGE_VCF}.tbi -f 'filter4' -o ${OUTPUT}
 	bcftools index -t ${OUTPUT}
+
+elif [[ $filter == "orthogonal_tools" ]]
+then
+	## merge
+	bcftools merge --force-samples --threads 16 ${illumina_vcf} ${hifi_vcf} ${ont_vcf} | bgzip > ${output_directory}/${sample}_${variant_caller}_${version}_Illumina_PacBio_ONT_somaticOnly_orthogonal_tools_merged.vcf.gz
+	bcftools index -t ${output_directory}/${sample}_${variant_caller}_${version}_Illumina_PacBio_ONT_somaticOnly_orthogonal_tools_merged.vcf.gz
+
+	# orthogonal tools filter on somatic only merged
+	TOOL=/private/groups/patenlab/jimin/scripts/deepsomatic/vcf_comprehensive.py
+
+	MERGE_VCF=${output_directory}/${sample}_${variant_caller}_${version}_Illumina_PacBio_ONT_somaticOnly_orthogonal_tools_merged.vcf.gz
+	OUTPUT=${output_directory}/${sample}_${variant_caller}_${version}_Illumina_PacBio_ONT_somaticOnly_orthogonal_tools_filter4.vcf.gz
+
+	python3 ${TOOL} -v ${MERGE_VCF} -i ${MERGE_VCF}.tbi -f 'filter4_orthogonal' -o ${OUTPUT}
+	bcftools index -t ${OUTPUT}
+
+
 elif [[ $filter == "orthogonal_technology" ]]
 then
 	################################################
